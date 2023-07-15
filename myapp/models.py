@@ -13,7 +13,7 @@ class Region(models.Model):
 
 
 class District(models.Model):
-    region = models.ForeignKey(Region, null=True, on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, null=True, on_delete=models.CASCADE, related_name='data')
     name_uz = models.CharField(max_length=250)
     name_ru = models.CharField(max_length=250)    
 
@@ -30,7 +30,7 @@ class District(models.Model):
 class Post(models.Model):
     user = models.ForeignKey('clinet.User', null=True, on_delete=models.CASCADE)
     region = models.ForeignKey(Region, null=True, on_delete=models.SET_NULL)
-    district = models.ForeignKey(District, null=True, on_delete=models.SET_NULL)
+    district = models.ForeignKey(District, null=True, on_delete=models.SET_NULL, related_name='data')
     img = models.ImageField(upload_to="images/")
     text_uz = models.TextField()
     text_ru = models.TextField()

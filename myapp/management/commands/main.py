@@ -64,10 +64,10 @@ def post_handler(update, context):
 
         keyboard = [[InlineKeyboardButton('Locatsiya', callback_data=f"{i.id}")],]
         reply_markup = InlineKeyboardMarkup(keyboard)
-
-
+        url = "http://192.168.0.130:3000/"
+        link = f'<a href="{url}">Bu link siz uchun foydali bo\'lishi mumkin</a>'
         context.bot.send_photo(chat_id=update.effective_user.id,
-                                photo=open(i.img.path, "rb"), caption=f"<b>Telefon nomer:</b> {i.number}\n<b>Ish vaqti:</b> {i.vaqt}\n<b>1 soat maydon naxri:</b> {i.price} so'm\n<b>Maydon soni:</b> {i.maydon_soni} ta\n<b>Maydon joylashga arinter:</b><i>{i.text_uz}</i>\n", 
+                                photo=open(i.img.path, "rb"), caption=f"<b>Telefon nomer:</b> {i.number}\n<b>Ish vaqti:</b> {i.vaqt}\n<b>1 soat maydon naxri:</b> {i.price} so'm\n<b>Maydon soni:</b> {i.maydon_soni} ta\n<b>Maydon joylashga arinter:</b><i>{i.text_uz}</i>\n Hello: {link}", 
                                 parse_mode="HTML", reply_markup=reply_markup)
         
 
@@ -122,7 +122,7 @@ def inline_button(update: Update, context: CallbackContext):
 
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
-        updater = Updater("6152178471:AAH5u8z9cK8mo1EoLlCOyFPUlgq2XPkN7aA")
+        updater = Updater("5893429977:AAElaJHJPzZJXHMZt5NRGUtZ2m55VV24apU")
 
         all_handler = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
